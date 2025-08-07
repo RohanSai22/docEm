@@ -39,7 +39,7 @@ Copy your documents and images to the `test` directory:
 ### 4. Run the System
 
 ```bash
-python main_new.py
+python main.py
 ```
 
 ### 5. Monitor Your Directory
@@ -127,3 +127,4 @@ When prompted, enter `test` (or the full path to your directory):
 ```
 
 ```
+
