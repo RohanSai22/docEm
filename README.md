@@ -12,6 +12,10 @@
 - **💾 In-memory Database**: Fast ChromaDB storage for instant search results
 - **🎯 Precise Results**: Returns top 2 most relevant results for focused search
 
+## Sample Output :
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2148dbc2-868b-463b-905a-e9714fcc11e8" />
+
+
 ## 🛠️ Installation
 
 ### Prerequisites
@@ -280,6 +284,4 @@ Open source - feel free to use and modify!
 **Happy Searching! 🎉**
 
 For support or questions, check the logs or create an issue in the repository.
-
-# docEm
 
