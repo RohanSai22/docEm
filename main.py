@@ -5,9 +5,15 @@ A comprehensive file monitoring and semantic search system that:
 1. Monitors a directory for file changes
 2. Extracts text from various file formats
 3. Creates embeddings using sentence transformers and CLIP
-4. Stores embeddings in ChromaDB (in-memory)
+4. Stores embeddings in ChromaDB (in-memory) with cosine similarity
 5. Provides interactive search interface with k=2 results
 6. Automatically processes new files and updates modified files
+
+Key improvements:
+- Proper embedding normalization for both text and images
+- Correct cosine similarity calculation (1 - distance)
+- Bounded similarity scores between -1.0 and 1.0
+- Consistent cross-modal search with normalized CLIP features
 """
 
 import os
@@ -17,6 +23,7 @@ import hashlib
 import uuid
 import traceback
 import logging
+import numpy as np
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
 from datetime import datetime
@@ -280,7 +287,7 @@ class EmbeddingManager:
             self.image_processor = None
     
     def get_text_embedding(self, text_chunks: List[str]) -> Optional[List[List[float]]]:
-        """Generate embeddings for text chunks"""
+        """Generate normalized embeddings for text chunks"""
         if self.text_model is None:
             logger.error("Text embedding model is not loaded")
             return None
@@ -289,14 +296,14 @@ class EmbeddingManager:
             return []
         
         try:
-            embeddings = self.text_model.encode(text_chunks, convert_to_tensor=True)
+            embeddings = self.text_model.encode(text_chunks, convert_to_tensor=True, normalize_embeddings=True)
             return embeddings.tolist()
         except Exception as e:
             logger.error(f"Error generating text embeddings: {e}")
             return None
     
     def get_image_embedding(self, image_path: str) -> Optional[List[float]]:
-        """Generate embedding for an image file"""
+        """Generate normalized embedding for an image file"""
         if self.image_model is None or self.image_processor is None:
             logger.error("Image embedding model or processor is not loaded")
             return None
@@ -311,6 +318,8 @@ class EmbeddingManager:
             
             with torch.no_grad():
                 image_features = self.image_model.get_image_features(pixel_values=inputs.pixel_values)
+                # Normalize the features for proper cosine similarity
+                image_features = torch.nn.functional.normalize(image_features, p=2, dim=1)
             
             return image_features.tolist()[0]
         except Exception as e:
@@ -318,7 +327,7 @@ class EmbeddingManager:
             return None
     
     def get_text_features_for_image_search(self, text_query: str) -> Optional[List[float]]:
-        """Generate text features using CLIP for cross-modal search"""
+        """Generate normalized text features using CLIP for cross-modal search"""
         if self.image_model is None or self.image_processor is None:
             logger.error("Image model not loaded for cross-modal search")
             return None
@@ -327,6 +336,8 @@ class EmbeddingManager:
             text_inputs = self.image_processor(text=[text_query], return_tensors="pt", padding=True)
             with torch.no_grad():
                 text_features = self.image_model.get_text_features(text_inputs.input_ids)
+                # Normalize the features for proper cosine similarity
+                text_features = torch.nn.functional.normalize(text_features, p=2, dim=1)
             return text_features.tolist()[0]
         except Exception as e:
             logger.error(f"Error generating text features for image search: {e}")
@@ -377,6 +388,27 @@ class DocEmSystem:
         self._initialize_models()
         self._initialize_chroma()
     
+    def _cosine_distance_to_similarity(self, distance: float) -> float:
+        """
+        Convert cosine distance to similarity score.
+        
+        With cosine distance metric and normalized vectors:
+        - Cosine distance = 1 - cosine_similarity
+        - Therefore: cosine_similarity = 1 - cosine_distance
+        
+        Distance ranges: 0 (identical) to 2 (opposite)
+        Similarity ranges: 1.0 (identical) to -1.0 (opposite)
+        
+        Args:
+            distance (float): Cosine distance from ChromaDB
+            
+        Returns:
+            float: Similarity score between -1.0 and 1.0
+        """
+        # Clamp distance to valid range [0, 2] to handle any numerical precision issues
+        distance = max(0.0, min(2.0, distance))
+        return 1.0 - distance
+    
     def _initialize_models(self):
         """Initialize embedding models"""
         logger.info("Initializing embedding models...")
@@ -389,15 +421,17 @@ class DocEmSystem:
             logger.info("Initializing in-memory ChromaDB...")
             self.chroma_client = chromadb.Client()
             
-            # Create collections
+            # Create collections with cosine similarity for proper bounded similarity scores
             self.text_collection = self.chroma_client.get_or_create_collection(
-                name=self.text_collection_name
+                name=self.text_collection_name,
+                metadata={"hnsw:space": "cosine"}
             )
             self.image_collection = self.chroma_client.get_or_create_collection(
-                name=self.image_collection_name
+                name=self.image_collection_name,
+                metadata={"hnsw:space": "cosine"}
             )
             
-            logger.info("ChromaDB collections created successfully")
+            logger.info("ChromaDB collections created successfully with cosine similarity")
         except Exception as e:
             logger.error(f"Error initializing ChromaDB: {str(e)}")
             raise
@@ -735,9 +769,12 @@ def interactive_search_loop(system: DocEmSystem):
                     metadata = text_results['metadatas'][0][i]
                     document = text_results['documents'][0][i]
                     
+                    # Convert distance to similarity using proper method
+                    similarity = system._cosine_distance_to_similarity(distance)
+                    
                     print(f"\n  Result {i+1}:")
                     print(f"    📁 File: {Path(metadata['file_path']).name}")
-                    print(f"    📊 Similarity: {1-distance:.4f}")
+                    print(f"    📊 Similarity: {similarity:.4f}")
                     print(f"    📑 Chunk: {metadata['chunk_index']+1}/{metadata['total_chunks']}")
                     print(f"    📝 Content: {document[:200]}{'...' if len(document) > 200 else ''}")
             
@@ -749,9 +786,12 @@ def interactive_search_loop(system: DocEmSystem):
                     distance = image_results['distances'][0][i]
                     metadata = image_results['metadatas'][0][i]
                     
+                    # Convert distance to similarity using proper method
+                    similarity = system._cosine_distance_to_similarity(distance)
+                    
                     print(f"\n  Result {i+1}:")
                     print(f"    📁 File: {Path(metadata['file_path']).name}")
-                    print(f"    📊 Similarity: {1-distance:.4f}")
+                    print(f"    📊 Similarity: {similarity:.4f}")
                     print(f"    🎨 Type: {metadata['file_type']}")
             
             if (not text_results or not text_results.get('ids') or not text_results['ids'][0]) and \

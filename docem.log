@@ -74,3 +74,65 @@
 2025-08-07 13:45:11,075 - INFO - Found 2 text results
 2025-08-07 13:45:11,163 - INFO - Found 2 image results from text query
 2025-08-07 14:43:44,495 - INFO - File monitoring stopped
+2025-08-07 15:39:39,249 - INFO - EmbeddingManager initialized
+2025-08-07 15:39:39,249 - INFO - Initializing embedding models...
+2025-08-07 15:39:39,249 - INFO - Loading text embedding model: BAAI/bge-small-en-v1.5
+2025-08-07 15:39:39,249 - INFO - Load pretrained SentenceTransformer: BAAI/bge-small-en-v1.5
+2025-08-07 15:39:42,361 - INFO - Use pytorch device_name: cpu
+2025-08-07 15:39:42,361 - INFO - Successfully loaded text model: BAAI/bge-small-en-v1.5
+2025-08-07 15:39:42,361 - INFO - Loading image embedding model: openai/clip-vit-base-patch32
+2025-08-07 15:39:44,933 - INFO - Successfully loaded image model: openai/clip-vit-base-patch32
+2025-08-07 15:39:44,933 - INFO - Initializing in-memory ChromaDB...
+2025-08-07 15:39:44,977 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-08-07 15:39:45,238 - INFO - ChromaDB collections created successfully with cosine similarity
+2025-08-07 15:40:06,404 - INFO - Starting to monitor directory: C:\Users\marag\Downloads\DocEm\something
+2025-08-07 15:40:06,404 - INFO - Scanning directory for existing files...
+2025-08-07 15:40:06,404 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\something\company_data_2(1).xlsx
+2025-08-07 15:40:08,480 - INFO - Added 1 text chunks for company_data_2(1).xlsx
+2025-08-07 15:40:08,481 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\something\company_data_2.xlsx
+2025-08-07 15:40:08,553 - INFO - Added 1 text chunks for company_data_2.xlsx
+2025-08-07 15:40:08,555 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\something\Documentation.pdf
+2025-08-07 15:40:15,045 - INFO - Added 113 text chunks for Documentation.pdf
+2025-08-07 15:40:15,045 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\something\rr (signed).pdf
+2025-08-07 15:40:15,229 - INFO - Added 5 text chunks for rr (signed).pdf
+2025-08-07 15:40:15,229 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\something\sample.xlsx
+2025-08-07 15:40:15,656 - INFO - Added 11 text chunks for sample.xlsx
+2025-08-07 15:40:15,657 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\something\Screenshot 2024-10-02 204854.png
+2025-08-07 15:40:15,853 - INFO - Added image embedding for Screenshot 2024-10-02 204854.png
+2025-08-07 15:40:15,855 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\something\Screenshot 2024-10-15 132157.png
+2025-08-07 15:40:15,959 - INFO - Added image embedding for Screenshot 2024-10-15 132157.png
+2025-08-07 15:40:15,961 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\something\Screenshot 2025-02-07 162129.png
+2025-08-07 15:40:16,071 - INFO - Added image embedding for Screenshot 2025-02-07 162129.png
+2025-08-07 15:40:16,075 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\something\Screenshot 2025-02-07 162437.png
+2025-08-07 15:40:16,178 - INFO - Added image embedding for Screenshot 2025-02-07 162437.png
+2025-08-07 15:40:16,180 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\something\Screenshot 2025-02-07 172507.png
+2025-08-07 15:40:16,277 - INFO - Added image embedding for Screenshot 2025-02-07 172507.png
+2025-08-07 15:40:16,281 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\something\Solana Curriculum_ Beginner to Ecosystem_.pdf
+2025-08-07 15:40:25,290 - INFO - Added 142 text chunks for Solana Curriculum_ Beginner to Ecosystem_.pdf
+2025-08-07 15:40:25,291 - INFO - Processed 11 files from directory scan
+2025-08-07 15:40:25,292 - INFO - File monitoring started successfully!
+2025-08-07 15:40:46,941 - INFO - Collection stats - Text chunks: 273, Images: 5
+2025-08-07 15:40:46,942 - INFO - Processing text query: 'find image with sikshak on it'
+2025-08-07 15:40:47,066 - INFO - Found 2 text results
+2025-08-07 15:40:47,134 - INFO - Found 2 image results from text query
+2025-08-07 15:40:59,370 - INFO - Collection stats - Text chunks: 273, Images: 5
+2025-08-07 15:40:59,370 - INFO - Processing text query: 'a image with certificate'
+2025-08-07 15:40:59,407 - INFO - Found 2 text results
+2025-08-07 15:40:59,439 - INFO - Found 2 image results from text query
+2025-08-07 15:41:14,473 - INFO - Collection stats - Text chunks: 273, Images: 5
+2025-08-07 15:41:14,473 - INFO - Processing text query: 'an image with layer 1 layer 2 blockchain'
+2025-08-07 15:41:14,518 - INFO - Found 2 text results
+2025-08-07 15:41:14,585 - INFO - Found 2 image results from text query
+2025-08-07 15:41:30,175 - INFO - Collection stats - Text chunks: 273, Images: 5
+2025-08-07 15:41:30,175 - INFO - Processing text query: 'an image with l2 rollup'
+2025-08-07 15:41:30,215 - INFO - Found 2 text results
+2025-08-07 15:41:30,305 - INFO - Found 2 image results from text query
+2025-08-07 15:41:48,179 - INFO - Collection stats - Text chunks: 273, Images: 5
+2025-08-07 15:41:48,179 - INFO - Processing text query: 'an image showcasing transactions'
+2025-08-07 15:41:48,223 - INFO - Found 2 text results
+2025-08-07 15:41:48,267 - INFO - Found 2 image results from text query
+2025-08-07 15:42:00,358 - INFO - Collection stats - Text chunks: 273, Images: 5
+2025-08-07 15:42:00,358 - INFO - Processing text query: 'an image with source chain conttract'
+2025-08-07 15:42:00,406 - INFO - Found 2 text results
+2025-08-07 15:42:00,499 - INFO - Found 2 image results from text query
+2025-08-07 15:42:08,995 - INFO - File monitoring stopped
