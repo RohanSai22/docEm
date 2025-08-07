@@ -38,7 +38,7 @@
 
 3. **Run the system**:
    ```bash
-   python main_new.py
+   python main.py
    ```
 
 ## 📦 Dependencies
@@ -62,7 +62,7 @@ The system uses the following key libraries:
 ### 1. Basic Usage
 
 ```bash
-python main_new.py
+python main.py
 ```
 
 ### 2. Setup Your Test Directory
@@ -172,7 +172,7 @@ The system uses these pre-configured models:
 ### Custom Directory Monitoring
 
 ```python
-from main_new import DocEmSystem
+from main import DocEmSystem
 
 system = DocEmSystem()
 system.start_monitoring("/path/to/your/documents")
@@ -282,3 +282,4 @@ Open source - feel free to use and modify!
 For support or questions, check the logs or create an issue in the repository.
 
 # docEm
+
