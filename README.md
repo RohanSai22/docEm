@@ -21,7 +21,7 @@ uv venv --python 3.11
 .venv\Scripts\activate
 uv pip install -r requirements.txt
 
-# Create test directory and add your files
+# Create test directory and add your files or you can just go ahead with the one which is setup
 mkdir test
 # Copy your documents and images to test/
 
