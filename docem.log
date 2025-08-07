@@ -1,0 +1,76 @@
+2025-08-07 13:42:50,590 - INFO - EmbeddingManager initialized
+2025-08-07 13:42:50,590 - INFO - Initializing embedding models...
+2025-08-07 13:42:50,590 - INFO - Loading text embedding model: BAAI/bge-small-en-v1.5
+2025-08-07 13:42:50,590 - INFO - Load pretrained SentenceTransformer: BAAI/bge-small-en-v1.5
+2025-08-07 13:42:53,626 - INFO - Use pytorch device_name: cpu
+2025-08-07 13:42:53,629 - INFO - Successfully loaded text model: BAAI/bge-small-en-v1.5
+2025-08-07 13:42:53,629 - INFO - Loading image embedding model: openai/clip-vit-base-patch32
+2025-08-07 13:42:56,191 - INFO - Successfully loaded image model: openai/clip-vit-base-patch32
+2025-08-07 13:42:56,191 - INFO - Initializing in-memory ChromaDB...
+2025-08-07 13:42:56,229 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-08-07 13:42:56,427 - INFO - ChromaDB collections created successfully
+2025-08-07 13:43:45,030 - INFO - Starting to monitor directory: C:\Users\marag\Downloads\DocEm\test
+2025-08-07 13:43:45,030 - INFO - Scanning directory for existing files...
+2025-08-07 13:43:45,030 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\advanced_analytics.py
+2025-08-07 13:43:47,571 - INFO - Added 29 text chunks for advanced_analytics.py
+2025-08-07 13:43:47,571 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\data_analysis.py
+2025-08-07 13:43:47,802 - INFO - Added 5 text chunks for data_analysis.py
+2025-08-07 13:43:47,804 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\document.md
+2025-08-07 13:43:47,924 - INFO - Added 3 text chunks for document.md
+2025-08-07 13:43:47,924 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\download (13).jpeg
+2025-08-07 13:43:48,080 - INFO - Added image embedding for download (13).jpeg
+2025-08-07 13:43:48,080 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\employees.csv
+2025-08-07 13:43:48,238 - INFO - Added 3 text chunks for employees.csv
+2025-08-07 13:43:48,240 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\financial_report.pdf
+2025-08-07 13:43:48,241 - ERROR - Error reading PDF C:\Users\marag\Downloads\DocEm\test\financial_report.pdf: EOF marker not found
+2025-08-07 13:43:48,290 - INFO - Added 1 text chunks for financial_report.pdf
+2025-08-07 13:43:48,290 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\ml_performance.md
+2025-08-07 13:43:48,886 - INFO - Added 8 text chunks for ml_performance.md
+2025-08-07 13:43:48,886 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\project_proposal.docx
+2025-08-07 13:43:48,889 - ERROR - Error reading DOCX C:\Users\marag\Downloads\DocEm\test\project_proposal.docx: Package not found at 'C:\Users\marag\Downloads\DocEm\test\project_proposal.docx'
+2025-08-07 13:43:48,933 - INFO - Added 1 text chunks for project_proposal.docx
+2025-08-07 13:43:48,933 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\sales_data.csv
+2025-08-07 13:43:49,133 - INFO - Added 4 text chunks for sales_data.csv
+2025-08-07 13:43:49,135 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\sample.txt
+2025-08-07 13:43:49,201 - INFO - Added 1 text chunks for sample.txt
+2025-08-07 13:43:49,203 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\Screenshot 2024-10-02 204854.png
+2025-08-07 13:43:49,318 - INFO - Added image embedding for Screenshot 2024-10-02 204854.png
+2025-08-07 13:43:49,320 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\Screenshot 2025-02-07 162437.png
+2025-08-07 13:43:49,450 - INFO - Added image embedding for Screenshot 2025-02-07 162437.png
+2025-08-07 13:43:49,452 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\Screenshot 2025-02-07 172507.png
+2025-08-07 13:43:49,565 - INFO - Added image embedding for Screenshot 2025-02-07 172507.png
+2025-08-07 13:43:49,568 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\sub\ai_research_paper.md
+2025-08-07 13:43:50,476 - INFO - Added 18 text chunks for ai_research_paper.md
+2025-08-07 13:43:50,478 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\sub\blockchain_analytics.py
+2025-08-07 13:43:53,283 - INFO - Added 47 text chunks for blockchain_analytics.py
+2025-08-07 13:43:53,287 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\sub\chart_image_description.txt
+2025-08-07 13:43:53,426 - INFO - Added 3 text chunks for chart_image_description.txt
+2025-08-07 13:43:53,427 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\sub\clinical_trial_report.docx
+2025-08-07 13:43:53,427 - ERROR - Error reading DOCX C:\Users\marag\Downloads\DocEm\test\sub\clinical_trial_report.docx: Package not found at 'C:\Users\marag\Downloads\DocEm\test\sub\clinical_trial_report.docx'
+2025-08-07 13:43:53,478 - INFO - Added 1 text chunks for clinical_trial_report.docx
+2025-08-07 13:43:53,480 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\sub\deep_learning.txt
+2025-08-07 13:43:53,656 - INFO - Added 5 text chunks for deep_learning.txt
+2025-08-07 13:43:53,658 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\sub\logo_description.txt
+2025-08-07 13:43:53,658 - WARNING - No text extracted from C:\Users\marag\Downloads\DocEm\test\sub\logo_description.txt
+2025-08-07 13:43:53,658 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\sub\market_analysis.xlsx
+2025-08-07 13:43:53,660 - ERROR - Error reading Excel C:\Users\marag\Downloads\DocEm\test\sub\market_analysis.xlsx: Excel file format cannot be determined, you must specify an engine manually.
+2025-08-07 13:43:53,708 - INFO - Added 1 text chunks for market_analysis.xlsx
+2025-08-07 13:43:53,710 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\sub\quarterly_performance.csv
+2025-08-07 13:43:53,950 - INFO - Added 6 text chunks for quarterly_performance.csv
+2025-08-07 13:43:53,950 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\sub\Screenshot 2024-10-15 132157.png
+2025-08-07 13:43:54,071 - INFO - Added image embedding for Screenshot 2024-10-15 132157.png
+2025-08-07 13:43:54,073 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\sub\Screenshot 2025-02-07 162129.png
+2025-08-07 13:43:54,208 - INFO - Added image embedding for Screenshot 2025-02-07 162129.png
+2025-08-07 13:43:54,212 - INFO - Processing file: C:\Users\marag\Downloads\DocEm\test\sub\WhatsApp Image 2025-04-05 at 00.36.05_9f378d95.jpg
+2025-08-07 13:43:54,403 - INFO - Added image embedding for WhatsApp Image 2025-04-05 at 00.36.05_9f378d95.jpg
+2025-08-07 13:43:54,403 - INFO - Processed 24 files from directory scan
+2025-08-07 13:43:54,405 - INFO - File monitoring started successfully!
+2025-08-07 13:44:41,489 - INFO - Collection stats - Text chunks: 136, Images: 7
+2025-08-07 13:44:41,490 - INFO - Processing text query: 'get me image with certificate details'
+2025-08-07 13:44:41,561 - INFO - Found 2 text results
+2025-08-07 13:44:41,666 - INFO - Found 2 image results from text query
+2025-08-07 13:45:11,034 - INFO - Collection stats - Text chunks: 136, Images: 7
+2025-08-07 13:45:11,034 - INFO - Processing text query: 'get me image where a person is there'
+2025-08-07 13:45:11,075 - INFO - Found 2 text results
+2025-08-07 13:45:11,163 - INFO - Found 2 image results from text query
+2025-08-07 14:43:44,495 - INFO - File monitoring stopped
